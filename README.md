@@ -21,7 +21,7 @@ This plugin provides two items:
 
 ### Requirements
 
-You will need to have the backend HCP consul plugin, `@backstage/plugin-hcp-consul-backend`, installed and running. See its README for set up instructions.
+You will need to have the backend HCP consul plugin, `@backstage/plugin-hcp-consul-backend`, installed and running. See its [README](plugins/hcp-consul-backend/README.md) for set up instructions.
 
 You will need clusters added in HCP Consul central. Learn more about [HCP Consul Central](https://developer.hashicorp.com/hcp/docs/consul/concepts/consul-central).
 
