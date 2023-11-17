@@ -63,13 +63,13 @@ const routes = (
 ```
 
 <div>
-<img src="./img/hcp-consul-overview.png" width="1000em">
+<img src="plugins/hcp-consul/img/hcp-consul-overview.png" width="1000em">
 </div>
 <div>
-<img src="./img/hcp-consul-clusters.png" width="1000em">
+<img src="plugins/hcp-consul/img/hcp-consul-clusters.png" width="1000em">
 </div>
 <div>
-<img src="./img/hcp-consul-services.png" width="1000em">
+<img src="plugins/hcp-consul/img/hcp-consul-services.png" width="1000em">
 </div>
 
 #### Requirements
@@ -99,7 +99,7 @@ const serviceEntityPage = (
 ```
 
 <div>
-<img src="./img/hcp-consul-service-instance-component.png" width="1000em">
+<img src="plugins/hcp-consul/img/hcp-consul-service-instance-component.png" width="1000em">
 </div>
 
 #### Requirements
