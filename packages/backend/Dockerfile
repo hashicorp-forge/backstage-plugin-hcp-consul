@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # This dockerfile builds an image for the backend package.
 # It should be executed with the root of the repo as docker context.
 #
