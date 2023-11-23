@@ -1,6 +1,6 @@
-# @backstage/plugin-hcp-consul-backend
+# @hashicorp/plugin-hcp-consul-backend
 
-A backend for HCP Consul, this plugin exposes a services with routes that are used by the `@backstage/plugin-hcp-consul` plugin to query HCP Consul overview and service instances using HCP Consul Central public APIs.
+A backend for HCP Consul, this plugin exposes a services with routes that are used by the `@hashicorp/plugin-hcp-consul` plugin to query HCP Consul overview and service instances using HCP Consul Central public APIs.
 
 ## Set Up
 
@@ -8,13 +8,13 @@ A backend for HCP Consul, this plugin exposes a services with routes that are us
 
 ```bash
 # From your Backstage root directory
-yarn add --cwd packages/backend @backstage/plugin-hcp-consul-backend
+yarn add --cwd packages/backend @hashicorp/plugin-hcp-consul-backend
 ```
 
 2. Create a `hcp-consul-backend.ts` file inside `packages/backend/src/plugins/`:
 
 ```typescript
-import { createRouter } from '@backstage/plugin-hcp-consul-backend';
+import { createRouter } from '@hashicorp/plugin-hcp-consul-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 
@@ -47,4 +47,4 @@ export default async function createPlugin(
 +  apiRouter.use('/hcp-consul-backend', await consul(consulBackendEnv));
 ```
 
-Note: for this backend to work, the `consul` configuration described in the README of `@backstage/plugin-hcp-consul` must be implemented.
+Note: for this backend to work, the `consul` configuration described in the README of `@hashicorp/plugin-hcp-consul` must be implemented.

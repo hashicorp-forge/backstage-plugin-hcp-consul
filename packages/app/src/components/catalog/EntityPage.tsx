@@ -63,7 +63,7 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
-import { HcpConsulPluginPage, EntityServiceInstancesTable } from '@backstage/plugin-hcp-consul';
+import { HcpConsulPluginPage, EntityServiceInstancesTable } from '@hashicorp/plugin-hcp-consul';
 
 const techdocsContent = (
   <EntityTechdocsContent>
