@@ -21,7 +21,7 @@ This plugin provides two items:
 
 ### Requirements
 
-You will need to have the backend HCP consul plugin, `@backstage/plugin-hcp-consul-backend`, installed and running. See its [README](plugins/hcp-consul-backend/README.md) for set up instructions.
+You will need to have the backend HCP consul plugin, `@hashicorp/plugin-hcp-consul-backend`, installed and running. See its [README](plugins/hcp-consul-backend/README.md) for set up instructions.
 
 You will need clusters added in HCP Consul central. Learn more about [HCP Consul Central](https://developer.hashicorp.com/hcp/docs/consul/concepts/consul-central).
 
@@ -31,7 +31,7 @@ You need to generate a service principal key. You can follow [this tutorial](htt
 
 ```bash
 # From your Backstage root directory
-yarn add --cwd packages/app @backstage/plugin-hcp-consul
+yarn add --cwd packages/app @hashicorp/plugin-hcp-consul
 ```
 
 ### Configuration
@@ -53,7 +53,7 @@ The snippet below adds the plugin page to the `/hcp-consul` path . The page show
 ```typescript
 // In packages/app/src/App.tsx
 
-import { HcpConsulPluginPage } from '@backstage/plugin-hcp-consul';
+import { HcpConsulPluginPage } from '@hashicorp/plugin-hcp-consul';
 
 const routes = (
   <FlatRoutes>
@@ -84,7 +84,7 @@ The snippet below adds a `/hcp-consul-instances` tab to the EntityPage that disp
 ```typescript
 // In packages/app/src/components/catalog/EntityPage.tsx
 
-import { EntityServiceInstancesTable, isHcpConsulServiceAvailable } from '@backstage/plugin-hcp-consul';
+import { EntityServiceInstancesTable, isHcpConsulServiceAvailable } from '@hashicorp/plugin-hcp-consul';
 
 const serviceEntityPage = (
     ...

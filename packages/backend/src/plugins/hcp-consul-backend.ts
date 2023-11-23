@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-import { createRouter } from '@backstage/plugin-hcp-consul-backend';
+import { createRouter } from '@hashicorp/plugin-hcp-consul-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 
