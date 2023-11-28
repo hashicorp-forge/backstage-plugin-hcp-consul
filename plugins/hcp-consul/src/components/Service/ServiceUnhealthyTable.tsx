@@ -16,7 +16,8 @@ import { useApi } from '@backstage/core-plugin-api';
 import Button from '@material-ui/core/Button';
 
 import { ServiceInstancesComponent } from './ServiceInstancesComponent';
-import { ServiceDetailsCard, listAndSetServices } from '.';
+import { ServiceDetailsCard } from './ServiceDetailsCard';
+import { listAndSetServices } from './ServiceListTable';
 import { SERVICES_PER_PAGE } from '../../constants';
 
 const serviceColumns: TableColumn<Service>[] = [
