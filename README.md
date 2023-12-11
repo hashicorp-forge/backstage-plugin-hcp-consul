@@ -121,3 +121,9 @@ metadata:
     consul.io/namespace: default
     consul.io/partition: default
 ```
+
+
+### Contributing
+You can raise a PR for any new feature. Before submitting a PR please create a GitHub issue so we can validate the change you may want to propose.
+
+As the project becomes more stable over the next several releases, we think it will become much easier to contribute.
