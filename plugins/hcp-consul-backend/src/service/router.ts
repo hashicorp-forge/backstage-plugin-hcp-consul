@@ -18,6 +18,10 @@ export async function createRouter(
 ): Promise<express.Router> {
   const { config, logger } = options;
 
+  // get version from package.json 
+  const { version } = require('../../package.json');
+  const userAgent = `backstage-plugin-hcp-consul-backend/${version}`
+
   // Get Consul baseUrl and creds
   const baseUrl = config.getString('backend.baseUrl');
   const clientID = config.getString('consul.clientID');
@@ -63,9 +67,10 @@ export async function createRouter(
       const authorizationHeaderValue = req.headers.authorization || '';
       const clustersResp = await fetch(endpoint, {
         method: 'GET',
-        headers: {
+        headers: {                    
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -97,6 +102,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -142,6 +148,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -177,6 +184,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -213,6 +221,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -246,6 +255,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
