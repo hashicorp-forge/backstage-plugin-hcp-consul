@@ -18,8 +18,12 @@ export async function createRouter(
 ): Promise<express.Router> {
   const { config, logger } = options;
 
-  // Get Consul baseUrl and creds
-  const baseUrl = config.getString('backend.baseUrl');
+  // get version from package.json 
+  const { version } = require('../../package.json');
+  const userAgent = `backstage-consul-backend/${version}`
+
+  const hcpBaseUrl = 'https://api.cloud.hashicorp.com';
+  const hcpAuthUrl = 'https://auth.hashicorp.com';
   const clientID = config.getString('consul.clientID');
   const clientSecret = config.getString('consul.clientSecret');
 
@@ -39,7 +43,7 @@ export async function createRouter(
       client_secret: clientSecret,
     };
 
-    const auth = await fetch(`${baseUrl}/api/proxy/hcpAuth/oauth/token`, {
+    const auth = await fetch(`${hcpAuthUrl}/oauth/token`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,14 +62,15 @@ export async function createRouter(
       const queryParams = (req.query as Record<string, string>) ?? '';
       const params = new URLSearchParams(queryParams);
 
-      const endpoint = `${baseUrl}/api/proxy/hcp/2023-10-10/consul/project/${projectID}/clusters?${params}`;
+      const endpoint = `${hcpBaseUrl}/2023-10-10/consul/project/${projectID}/clusters?${params}`;
 
       const authorizationHeaderValue = req.headers.authorization || '';
       const clustersResp = await fetch(endpoint, {
         method: 'GET',
-        headers: {
+        headers: {                    
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -88,7 +93,7 @@ export async function createRouter(
     async (req, res) => {
       const clusterName = req.params.cluster_name;
       const projectID = req.params.project_id;
-      const endpoint = `${baseUrl}/api/proxy/hcp/2023-10-10/consul/project/${projectID}/cluster/${clusterName}`;
+      const endpoint = `${hcpBaseUrl}/2023-10-10/consul/project/${projectID}/cluster/${clusterName}`;
 
       // Access and get the 'Authorization' header
       const authorizationHeaderValue = req.headers.authorization || '';
@@ -97,6 +102,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -133,7 +139,7 @@ export async function createRouter(
         }
       }
 
-      const endpoint = `${baseUrl}/api/proxy/hcp/2023-10-10/consul/project/${projectID}/services?${params}`;
+      const endpoint = `${hcpBaseUrl}/2023-10-10/consul/project/${projectID}/services?${params}`;
 
       // Access and get the 'Authorization' header
       const authorizationHeaderValue = req.headers.authorization || '';
@@ -142,6 +148,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -169,7 +176,7 @@ export async function createRouter(
       const queryParams = (req.query as Record<string, string>) ?? '';
       const params = new URLSearchParams(queryParams);
 
-      const endpoint = `${baseUrl}/api/proxy/hcp/2023-10-10/consul/project/${projectID}/cluster/${clusterName}/service/${serviceName}?${params}`;
+      const endpoint = `${hcpBaseUrl}/2023-10-10/consul/project/${projectID}/cluster/${clusterName}/service/${serviceName}?${params}`;
       const authorizationHeaderValue = req.headers.authorization || '';
 
       const servicesResp = await fetch(endpoint, {
@@ -177,6 +184,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -204,7 +212,7 @@ export async function createRouter(
       const queryParams = (req.query as Record<string, string>) ?? '';
       const params = new URLSearchParams(queryParams);
 
-      const endpoint = `${baseUrl}/api/proxy/hcp/2023-10-10/consul/project/${projectID}/cluster/${clusterName}/service/${serviceName}/instances?${params}`;
+      const endpoint = `${hcpBaseUrl}/2023-10-10/consul/project/${projectID}/cluster/${clusterName}/service/${serviceName}/instances?${params}`;
       // Access and get the 'Authorization' header
       const authorizationHeaderValue = req.headers.authorization || '';
 
@@ -213,6 +221,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 
@@ -237,7 +246,7 @@ export async function createRouter(
       const projectID = req.params.project_id;
 
       // Append the query string to the endpoint
-      const endpoint = `${baseUrl}/api/proxy/hcp/global-network-manager/2022-02-15/organizations/${organizationID}/projects/${projectID}/aggregate_service_summary`;
+      const endpoint = `${hcpBaseUrl}/global-network-manager/2022-02-15/organizations/${organizationID}/projects/${projectID}/aggregate_service_summary`;
 
       // Access and get the 'Authorization' header
       const authorizationHeaderValue = req.headers.authorization || '';
@@ -246,6 +255,7 @@ export async function createRouter(
         headers: {
           Accept: 'application/json',
           Authorization: authorizationHeaderValue,
+          'User-Agent': userAgent,  
         },
       });
 

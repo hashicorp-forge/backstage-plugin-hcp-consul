@@ -46,21 +46,6 @@ integrations:
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
 
-proxy:
-  '/hcp': 
-    target: 'https://api.cloud.hashicorp.com'
-    allowedMethods: ['GET', 'POST']
-    allowedHeaders: ['Authorization']
-  '/hcpAuth': 
-    target: 'https://auth.hashicorp.com'
-    allowedMethods: ['GET', 'POST']
-    allowedHeaders: ['Content-Type']
-
-
-
-  ### Example for how to add a proxy endpoint for the frontend.
-  ### A typical reason to do this is to handle HTTPS and CORS for internal services.
-
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
